@@ -64,7 +64,7 @@ In general, the outputs of an operation need to be stored somewhere in the datap
 
 In the pessimistic case, each operation emits a unique set of outputs that are then provided to each successor operation. For example, an ADD operation outputs a 32 bit value, of which the MSBs [31:16] are passed to successor operation V1 and the LSBs [15:0] are passed to operation V2, thus requiring 32 bits of memory. In the optimistic case, successor operations share the same pool of outputs. For example, an ADD operation outputs the same 16 bit value to two downstream operations. Since the same value is given to both downstream operations, only 16 bits of memory is needed. For this project, we represent the amount of data each data edge transfers by assigning a weight $w(o,p)$ for each edge $(o,p)\in E$ in the dataflow graph. A visual representation of the difference is shown below:
 
-<img src="./figures/image-20241211163040616.png" alt="image-20241211163040616" style="zoom:50%;" /> <img src="./figures/image-20241211163108382.png" alt="image-20241211163108382" style="zoom:50%;" />
+<img src="./figures/image-20241211163040616.png?raw=true" alt="image-20241211163040616" style="zoom:50%;" /> <img src="./figures/image-20241211163108382.png?raw=true" alt="image-20241211163108382" style="zoom:50%;" />
 
 Red lines represent clock boundaries. In the pessimistic model, each downstream operation consumes its own slice of the output of operation A, so memory usage at the first clock boundary is 8, while in the optimistic model, each downstream operation shares the same 5 outputs, so the memory usage at the first clock boundary is less, at only 5. 
 
